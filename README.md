@@ -1,36 +1,11 @@
-# Project Summary: Bharath Oriento using Firebase Studio
+# Project Summary: Mobile Oriento
 
-This document provides a blueprint of the "Bharath Oriento" application and a summary of the development process.
+This document provides a blueprint of the "Mobile Oriento" application and a summary of the development process.
 
 ## 1. App Blueprint
 
 ### Overview
-"Bharath Oriento" is a responsive web application designed for mobile devices. Its core concept is to offer different utility tools based on the physical orientation of the device. The application's tagline is "Flip the phone, switch the mode."
-
-Orientation Detection — Detect the device's current orientation (portrait upright, landscape right-side up, portrait upside down, landscape left-side up).
-Alarm Clock — Display an alarm clock interface in portrait upright mode.
-Stopwatch — Show a stopwatch when the device is in landscape mode (right-side up).
-Timer — Present a timer feature when the device is in portrait mode (upside down).
-Weather Display
- — Show the weather for the user's location when the device is in landscape mode (left-side up) using a free weather API tool. The application decides if and how to include the temperature, a short textual description of the weather, an icon, and an icon of the wind.
-Color
-Layout
-A clean and responsive layout adapting to different screen sizes; ensures that the appropriate function (alarm, stopwatch, timer, weather) is prominently displayed based on the device's orientation.
-Typography
-Font pairing: 'Poppins' (sans-serif) for headings and short blocks of text and 'PT Sans' (sans-serif) for body text.
-Iconography
-Simple, clear icons to represent the alarm, stopwatch, timer, and weather conditions, improving usability at a glance.
-Animation
-Subtle animations for transitions between orientations and updating information; enhances the user experience by making interactions smooth and intuitive.
-AI
-Gemini, Genkit
-Gemini: A powerful AI model capable of understanding and generating various forms of input, including text, code, audio, images, and video. Learn more
-Genkit: An open-source framework from Google that provides a unified API to access AI models and streamlines AI logic, tool use, image generation, and more. Learn more
-UI
-TypeScript, NextJS, Tailwind CSS
-TypeScript: A popular programming language that adds type safety to JavaScript.
-NextJS: A popular web framework built on React with support for client- and server-side rendering.
-Tailwind CSS: A popular CSS framework that lets you style components inline with your HTML and maintain UI consistency across your app
+"Mobile Oriento" is a responsive web application designed for mobile devices. Its core concept is to offer different utility tools based on the physical orientation of the device. The application's tagline is "Flip the phone, switch the mode."
 
 ### Core Functionality
 The application uses the browser's Screen Orientation API to detect the device's orientation and dynamically renders a corresponding component.
@@ -57,9 +32,55 @@ The application uses the browser's Screen Orientation API to detect the device's
 - **Color Scheme**: A warm "Sunset" theme with a deep orange primary color, a magenta accent, and a soft off-white background.
 - **Fonts**: `Poppins` for headlines and `PT Sans` for body text.
 
+### Features
+- **Orientation Detection**: Detect the device's current orientation (portrait upright, landscape right-side up, portrait upside down, landscape left-side up).
+- **Alarm Clock**: Display an alarm clock interface in portrait upright mode.
+- **Stopwatch**: Show a stopwatch when the device is in landscape mode (right-side up).
+- **Timer**: Present a timer feature when the device is in portrait mode (upside down).
+- **Weather Display**: Show the weather for the user's location when the device is in landscape mode (left-side up) using a free weather API tool. The application decides if and how to include the temperature, a short textual descr
+
+
 ---
 
-## 2. Development Log & Prompts
+## 2. Codebase & Tech Stack
+
+The application is built on a modern, component-based architecture using the following technologies:
+
+-   **Framework**: [Next.js](https://nextjs.org/) with the App Router
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **UI Library**: [React](https://react.dev/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [ShadCN UI](https://ui.shadcn.com/)
+-   **Animation**: [Framer Motion](https://www.framer.com/motion/) for smooth page and component transitions.
+-   **Icons**: [Lucide React](https://lucide.dev/)
+
+The codebase is organized into components, hooks, and AI flows to ensure maintainability and scalability.
+
+## 3. AI Tools Used
+
+The application leverages Google's Generative AI to provide intelligent features.
+
+-   **AI Framework**: [Genkit](https://firebase.google.com/docs/genkit), Google's open-source framework for building AI-powered applications. 
+-   **Model**: The weather feature is powered by the `googleai/gemini-2.5-flash` model. A powerful AI model capable of understanding and generating various forms of input, including text, code, audio, images, and video.
+
+### Weather Feature
+
+The weather widget (`src/components/weather.tsx`) uses a Genkit flow to fetch and display current weather conditions based on the user's geolocation.
+
+-   **Flow Location**: `src/ai/flows/weather-description-from-location.ts`
+-   **Functionality**: It takes the user's latitude and longitude, passes them to the Genkit flow, and receives a structured JSON object containing the temperature, a weather description, and relevant icon names.
+
+## 4. Prompting Technique
+
+The AI's behavior is guided by a carefully crafted prompt within the Genkit flow.
+
+-   **Prompt Definition**: Located in the `weatherPrompt` object in the weather flow file.
+
+The prompt instructs the AI model to act as a "helpful weather assistant." It is given the latitude and longitude and is instructed to return a JSON object that strictly adheres to a predefined Zod schema (`WeatherDescriptionFromLocationOutputSchema`).
+
+This technique, known as **structured output prompting**, ensures that the AI's response is always in a predictable, machine-readable format that the application can easily parse and display, which prevents errors and improves reliability. The use of Zod schemas to define the output format is a key part of this robust implementation.
+
+## 5. Development Log & Prompts
 
 This section summarizes the key interactions and changes made to the application.
 
