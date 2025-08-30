@@ -1,11 +1,11 @@
-# Project Summary: Bharath Oriento
+# Project Summary: Mobile Oriento
 
-This document provides a blueprint of the "Bharath Oriento" application and a summary of the development process.
+This document provides a blueprint of the "Mobile Oriento" application and a summary of the development process.
 
 ## 1. App Blueprint
 
 ### Overview
-"Bharath Oriento" is a responsive web application designed for mobile devices. Its core concept is to offer different utility tools based on the physical orientation of the device. The application's tagline is "Flip the phone, switch the mode."
+"Mobile Oriento" is a responsive web application designed for mobile devices. Its core concept is to offer different utility tools based on the physical orientation of the device. The application's tagline is "Flip the phone, switch the mode."
 
 ### Core Functionality
 The application uses the browser's Screen Orientation API to detect the device's orientation and dynamically renders a corresponding component.
