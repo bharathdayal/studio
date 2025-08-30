@@ -34,7 +34,45 @@ The application uses the browser's Screen Orientation API to detect the device's
 
 ---
 
-## 2. Development Log & Prompts
+## 2. Codebase & Tech Stack
+
+The application is built on a modern, component-based architecture using the following technologies:
+
+-   **Framework**: [Next.js](https://nextjs.org/) with the App Router
+-   **Language**: [TypeScript](https://www.typescriptlang.org/)
+-   **UI Library**: [React](https://react.dev/)
+-   **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+-   **UI Components**: [ShadCN UI](https://ui.shadcn.com/)
+-   **Animation**: [Framer Motion](https://www.framer.com/motion/) for smooth page and component transitions.
+-   **Icons**: [Lucide React](https://lucide.dev/)
+
+The codebase is organized into components, hooks, and AI flows to ensure maintainability and scalability.
+
+## 3. AI Tools Used
+
+The application leverages Google's Generative AI to provide intelligent features.
+
+-   **AI Framework**: [Genkit](https://firebase.google.com/docs/genkit), Google's open-source framework for building AI-powered applications.
+-   **Model**: The weather feature is powered by the `googleai/gemini-2.5-flash` model.
+
+### Weather Feature
+
+The weather widget (`src/components/weather.tsx`) uses a Genkit flow to fetch and display current weather conditions based on the user's geolocation.
+
+-   **Flow Location**: `src/ai/flows/weather-description-from-location.ts`
+-   **Functionality**: It takes the user's latitude and longitude, passes them to the Genkit flow, and receives a structured JSON object containing the temperature, a weather description, and relevant icon names.
+
+## 4. Prompting Technique
+
+The AI's behavior is guided by a carefully crafted prompt within the Genkit flow.
+
+-   **Prompt Definition**: Located in the `weatherPrompt` object in the weather flow file.
+
+The prompt instructs the AI model to act as a "helpful weather assistant." It is given the latitude and longitude and is instructed to return a JSON object that strictly adheres to a predefined Zod schema (`WeatherDescriptionFromLocationOutputSchema`).
+
+This technique, known as **structured output prompting**, ensures that the AI's response is always in a predictable, machine-readable format that the application can easily parse and display, which prevents errors and improves reliability. The use of Zod schemas to define the output format is a key part of this robust implementation.
+
+## 5. Development Log & Prompts
 
 This section summarizes the key interactions and changes made to the application.
 
