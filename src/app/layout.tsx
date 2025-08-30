@@ -3,7 +3,7 @@ import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
 
 export const metadata: Metadata = {
-  title: 'Orientation Station',
+  title: 'Mobile Orientation-BD',
   description: 'A utility app that changes based on device orientation.',
 };
 

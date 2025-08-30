@@ -25,7 +25,7 @@ export default function Home() {
         return (
           <div className="text-center p-8 rounded-lg bg-card/80 backdrop-blur-sm border-primary/20 max-w-md shadow-2xl">
             <Smartphone className="mx-auto h-24 w-24 text-primary" />
-            <h2 className="mt-6 text-2xl font-headline font-semibold">Welcome to Orientation Station!</h2>
+            <h2 className="mt-6 text-2xl font-headline font-semibold">Welcome to Mobile Orientation-BD!</h2>
             <p className="mt-2 text-muted-foreground font-body">
               This app works best on a mobile device.
             </p>
@@ -46,7 +46,7 @@ export default function Home() {
         </div>
         <div className="z-10 w-full flex flex-col items-center">
             <h1 className="text-4xl md:text-5xl font-headline font-bold text-center mb-8 text-primary/80">
-              Orientation Station
+              Mobile Orientation-BD
             </h1>
             <AnimatePresence mode="wait">
               <motion.div
