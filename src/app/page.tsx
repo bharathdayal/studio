@@ -25,9 +25,9 @@ export default function Home() {
         return (
           <div className="text-center p-8 rounded-lg bg-card/80 backdrop-blur-sm border-primary/20 max-w-md shadow-2xl">
             <Smartphone className="mx-auto h-24 w-24 text-primary" />
-            <h2 className="mt-6 text-2xl font-headline font-semibold">Welcome to Mobile Orientation-BD!</h2>
+            <h2 className="mt-6 text-2xl font-headline font-semibold">Welcome to Bharath Oriento!</h2>
             <p className="mt-2 text-muted-foreground font-body">
-              This app works best on a mobile device.
+              Flip the phone, switch the mode.
             </p>
             <div className="mt-4 text-muted-foreground font-body flex items-center justify-center gap-2">
                 <RotateCw className="h-5 w-5 animate-spin-slow" />
@@ -45,9 +45,10 @@ export default function Home() {
             <div className="absolute -bottom-1/4 -right-1/4 w-1/2 h-1/2 bg-accent/10 rounded-full filter blur-3xl opacity-50 animate-blob animation-delay-2000"></div>
         </div>
         <div className="z-10 w-full flex flex-col items-center">
-            <h1 className="text-4xl md:text-5xl font-headline font-bold text-center mb-8 text-primary/80">
-              Mobile Orientation-BD
+            <h1 className="text-4xl md:text-5xl font-headline font-bold text-center mb-2 text-primary/80">
+              Bharath Oriento
             </h1>
+            <p className="text-muted-foreground font-body mb-8">Flip the phone, switch the mode</p>
             <AnimatePresence mode="wait">
               <motion.div
                 key={orientation || 'default'}
