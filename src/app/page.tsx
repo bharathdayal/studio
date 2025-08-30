@@ -1,18 +1,40 @@
 "use client";
 
-import { useOrientation } from "@/hooks/use-orientation";
+import { useState, useEffect } from "react";
+import { useOrientation, type Orientation } from "@/hooks/use-orientation";
 import { AlarmClock } from "@/components/alarm-clock";
 import { Stopwatch } from "@/components/stopwatch";
 import { Timer } from "@/components/timer";
 import { Weather } from "@/components/weather";
-import { Smartphone, RotateCw } from "lucide-react";
+import { Smartphone, RotateCw, Shuffle } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+
+const modes: (Orientation | 'default')[] = ['portrait-primary', 'landscape-primary', 'portrait-secondary', 'landscape-secondary'];
 
 export default function Home() {
   const orientation = useOrientation();
+  const [manualModeIndex, setManualModeIndex] = useState<number | null>(null);
+
+  const currentMode = manualModeIndex !== null ? modes[manualModeIndex] : orientation;
+
+  const handleManualSwitch = () => {
+    setManualModeIndex(prev => (prev === null ? 0 : (prev + 1) % modes.length));
+  };
+  
+  useEffect(() => {
+    // If orientation is detected, reset manual mode
+    if (orientation) {
+      const orientationIndex = modes.indexOf(orientation);
+      if (orientationIndex !== -1 && manualModeIndex === null) {
+        // This is to sync up if orientation is detected after manual switch was used
+      }
+    }
+  }, [orientation, manualModeIndex]);
+
 
   const renderContent = () => {
-    switch (orientation) {
+    switch (currentMode) {
       case "portrait-primary":
         return <AlarmClock />;
       case "landscape-primary":
@@ -51,7 +73,7 @@ export default function Home() {
             <p className="text-muted-foreground font-body mb-8">Flip the phone, switch the mode</p>
             <AnimatePresence mode="wait">
               <motion.div
-                key={orientation || 'default'}
+                key={currentMode || 'default'}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -20 }}
@@ -61,6 +83,10 @@ export default function Home() {
                 {renderContent()}
               </motion.div>
             </AnimatePresence>
+            <Button onClick={handleManualSwitch} variant="outline" className="mt-8">
+              <Shuffle className="mr-2 h-4 w-4" />
+              Switch Mode
+            </Button>
         </div>
     </main>
   );
