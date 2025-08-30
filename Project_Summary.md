@@ -32,6 +32,14 @@ The application uses the browser's Screen Orientation API to detect the device's
 - **Color Scheme**: A warm "Sunset" theme with a deep orange primary color, a magenta accent, and a soft off-white background.
 - **Fonts**: `Poppins` for headlines and `PT Sans` for body text.
 
+### Features
+- **Orientation Detection**: Detect the device's current orientation (portrait upright, landscape right-side up, portrait upside down, landscape left-side up).
+- **Alarm Clock**: Display an alarm clock interface in portrait upright mode.
+- **Stopwatch**: Show a stopwatch when the device is in landscape mode (right-side up).
+- **Timer**: Present a timer feature when the device is in portrait mode (upside down).
+- **Weather Display**: Show the weather for the user's location when the device is in landscape mode (left-side up) using a free weather API tool. The application decides if and how to include the temperature, a short textual descr
+
+
 ---
 
 ## 2. Codebase & Tech Stack
@@ -52,8 +60,8 @@ The codebase is organized into components, hooks, and AI flows to ensure maintai
 
 The application leverages Google's Generative AI to provide intelligent features.
 
--   **AI Framework**: [Genkit](https://firebase.google.com/docs/genkit), Google's open-source framework for building AI-powered applications.
--   **Model**: The weather feature is powered by the `googleai/gemini-2.5-flash` model.
+-   **AI Framework**: [Genkit](https://firebase.google.com/docs/genkit), Google's open-source framework for building AI-powered applications. 
+-   **Model**: The weather feature is powered by the `googleai/gemini-2.5-flash` model. A powerful AI model capable of understanding and generating various forms of input, including text, code, audio, images, and video.
 
 ### Weather Feature
 
